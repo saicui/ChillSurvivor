@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>チル・サバイバー</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="game-container">
+        <!-- キャンバス描写領域 -->
+        <canvas id="gameCanvas"></canvas>
+
+        <!-- UIオーバーレイ -->
+        <div id="ui-layer">
+            <div id="top-ui">
+                <div id="exp-container">
+                    <div id="exp-bar"></div>
+                </div>
+                <div id="exp-text">レベル 1</div>
+            </div>
+
+            <div id="stats-ui">
+                <div id="hp-container">
+                    <div id="hp-bar"></div>
+                </div>
+                <!-- ステージ情報とコイン情報 -->
+                <div id="info-container">
+                    <div id="stage-text">ステージ 1</div>
+                    <div id="coin-text">🪙 <span id="coin-count">0</span></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- タイトル画面 -->
+        <div id="title-screen" class="overlay">
+            <h1>チル・サバイバー</h1>
+            <p>難易度を選択してスタート！</p>
+            <div class="difficulty-options">
+                <button class="diff-btn" data-diff="1" style="border-color: #2ecc71;">EASY (初心者向け)</button>
+                <button class="diff-btn" data-diff="2" style="border-color: #f1c40f;">NORMAL (標準)</button>
+                <button class="diff-btn" data-diff="3" style="border-color: #e74c3c;">HARD (難しい)</button>
+            </div>
+        </div>
+
+        <!-- ボスWARNING演出 -->
+        <div id="warning-screen" class="overlay hidden">
+            <h1 class="blink-text">WARNING!!</h1>
+        </div>
+
+        <!-- レベルアップモーダル -->
+        <div id="level-up-modal" class="modal hidden">
+            <h2>レベルアップ！</h2>
+            <p>能力や武器を選択してください</p>
+            <div id="upgrade-options">
+                <!-- JSで動的にボタンを生成 -->
+            </div>
+        </div>
+
+        <!-- ショップモーダル -->
+        <div id="shop-modal" class="modal hidden">
+            <h2>ショップ (ステージクリア！)</h2>
+            <p>所持コイン: 🪙 <span id="shop-coin-count">0</span></p>
+            <div id="shop-options">
+                <!-- JSで動的にボタンを生成 -->
+            </div>
+            <button id="next-stage-button">次のステージへ</button>
+        </div>
+
+        <!-- ゲームオーバーモーダル -->
+        <div id="game-over-modal" class="modal hidden">
+            <h1>ゲームオーバー</h1>
+            <p>到達ステージ: <span id="final-stage">1</span></p>
+            <p>倒した敵の数: <span id="final-kills">0</span></p>
+            <button id="retry-button">もう一度プレイする</button>
+        </div>
+    </div>
+
+    <script src="game.js"></script>
+</body>
+
+</html>
